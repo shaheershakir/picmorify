@@ -1,4 +1,4 @@
-'use-client';
+'use client';
 
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Image from 'next/image';
@@ -13,7 +13,7 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
-import { navLinks } from '@/constants/intex';
+import { navLinks } from '@/constants';
 import { usePathname } from 'next/navigation';
 import { Sign } from 'crypto';
 import { Button } from '../ui/button';
