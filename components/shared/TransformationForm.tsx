@@ -33,13 +33,14 @@ import { useState, useTransition } from 'react';
 import { on } from 'events';
 import { AspectRatioKey, debounce, deepMergeObjects } from '@/lib/utils';
 import { updateCredits } from '@/lib/actions/user.actions';
+import MediaUploader from './MediaUploader';
 
 export const formSchema = z.object({
   title: z.string(),
   aspectRatio: z.string().optional(),
   color: z.string().optional(),
   prompt: z.string().optional(),
-  publicID: z.string()
+  publicId: z.string()
 });
 
 const TranformationForm = ({
@@ -219,6 +220,23 @@ const TranformationForm = ({
             )}
           </div>
         )}
+
+        <div className='media--uploader-field'>
+          <CustomField
+            control={form.control}
+            name='publicId'
+            className='flex size-full flex-col'
+            render={({ field }) => (
+              <MediaUploader
+                onValueChange={field.onChange}
+                setImage={setImage}
+                publicId={field.value}
+                image={image}
+                type={type}
+              />
+            )}
+          />
+        </div>
 
         <div className='flex flex-col gap-4'>
           <Button
